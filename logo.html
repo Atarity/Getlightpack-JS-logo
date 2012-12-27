@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript" src="logo.js"><!-- --></script>
+        <link href="logo.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body onLoad="showLogo();">
+        <canvas id="box1" width="200" height="200"></canvas>
+        <div id="square"></div>
+    </body>
+    <script>
+        function showLogo() {
+            initLogo();
+            setInterval(function() {
+                i++;
+                if (i < 1000000) {
+                    animation();
+                }
+            }, 50);
+        }
+    </script>
+</html>

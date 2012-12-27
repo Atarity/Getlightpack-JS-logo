@@ -1,0 +1,15 @@
+
+body {
+    font: 10pt Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
+    background: #252525; /* Цвет фона */
+}
+
+#square {
+    width:69px; 
+    height:69px; 
+    background: #252525; 
+    position: absolute; 
+    left: 24px; 
+    top: 24;    
+    //display: none;
+}
