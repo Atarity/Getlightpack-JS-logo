@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="./css/screen.css">
+
+        <script type="text/javascript" src="./js/logo.js"></script>
+
+		<script type="text/javascript">
+		    function showLogo() {
+		        initLogo();
+		        setInterval(function() {
+		            // i++;
+		            // if (i < 1000000) 
+		            {
+		                animation();
+		            }
+		        }, 50);
+		    }
+		</script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+	<body onLoad="showLogo();">
+		<section class="section logo">
+			<div class="logo__container">			
+		        <canvas id="box1" width="200" height="200"></canvas>
+		        <div class="logo__image"></div>
+		    </div>
+		</section>
+		<section class="section title">
+			There is no tome to explain,<br>
+			get <span>the lightpack</span>
+		</section>
+		<section class="section button">
+			<a href="#" class="button-button">sure!</a>
+			This button will teleport you to short preorder form
+		</section>
+	</body>
+</html>

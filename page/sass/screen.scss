@@ -1,0 +1,81 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+
+@font-face {
+    font-family: 'league_gothicregular';
+    src: url('./fonts/league_gothic-webfont.eot');
+    src: url('./fonts/league_gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/league_gothic-webfont.woff') format('woff'),
+         url('./fonts/league_gothic-webfont.ttf') format('truetype'),
+         url('./fonts/league_gothic-webfont.svg#league_gothicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background: #000;
+	color: #555;
+	font-size: 12px;
+	font-family: 'league_gothicregular', sans-serif;
+	height: auto;
+	min-height: 100%;
+	background-image: url(../images/patterns/stressed_linen.png);
+}
+.section {
+	width: 520px;
+	margin: 0 auto;
+	text-align: center;
+	&.logo {
+		padding: 50px;
+		.logo__container {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+		}
+		.logo__image {
+
+		}
+	}
+	&.title {
+		color: #888;
+		font-size: 3em;
+		line-height: 1.2em;
+		text-transform: uppercase;
+		border-top: 1px solid #333;
+		border-bottom: 1px solid #333;
+		padding: 35px 0;
+		letter-spacing: 0.001em;
+		span {
+			color: #57cbcd;
+		}
+	}
+	&.button {
+		padding: 53px 0;
+		letter-spacing: 0.13em;
+		.button-button {
+			text-indent: -9999em;
+			/*background: #57cbcd;*/
+			display: block;
+			width: 115px;
+			height: 39px;
+			margin: 0 auto 13px;
+		}
+	}
+}
+
+$button-layout: vertical;
+@import "button/*.png";
+@include all-button-sprites;
