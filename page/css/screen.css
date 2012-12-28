@@ -89,7 +89,7 @@ body {
     text-transform: uppercase;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
-    padding: 35px 0;
+    padding: 40px 0 35px 0;
     letter-spacing: 0.001em; }
     .section.title span {
       color: #57cbcd; }
@@ -105,7 +105,7 @@ body {
       margin: 0 auto 13px; }
 
 .button-sprite, .button-button {
-  background: url('/images/button-s931451d155.png') no-repeat; }
+  background: url('../images/button-s931451d155.png') no-repeat; }
 
 .button-button {
   background-position: 0 0; }
