@@ -78,7 +78,7 @@ var backRect = new Rectangle(20, 20 , 43, 43);
 
 function P(sA, isAddPi) {
     var i = gTime;
-    var p =(Math.acos(sA)*6);
+    var p =(Math.acos(sA)*5);
     if (isAddPi)
         return Math.cos( i * 0.2 - p );
     else
