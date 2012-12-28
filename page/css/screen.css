@@ -82,6 +82,16 @@ body {
       width: 200px;
       height: 200px;
       margin: 0 auto; }
+      .section.logo .logo__image {
+        position: absolute;
+        top: 35px;
+        left: 35px;        
+        z-index: 2; 
+        width: 130px;
+        height: 130px;
+        margin: 0 auto;
+        background-image: url('../images/LP-cover.png');
+        background-color: transparent;      }
   .section.title {
     color: #888;
     font-size: 3em;
@@ -114,4 +124,9 @@ body {
 
 #logo__invisible {
     display:none;
+}
+
+#box1 {
+    width:800px;
+    height:400px;    
 }

@@ -74,7 +74,7 @@ var gHalfWidth=Math.round(gWidth/2);
 var gHalfHeight=Math.round(gHeight/2);
 var mouseCoords=new Vector(-100,-100);
 
-var backRect = new Rectangle(20, 20 , 44, 44);
+var backRect = new Rectangle(20, 20 , 43, 43);
 
 function P(sA, isAddPi) {
     var i = gTime;
