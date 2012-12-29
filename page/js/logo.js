@@ -72,7 +72,12 @@ var gHeight=64;
 var scaleFactor=200/64;
 var gHalfWidth=Math.round(gWidth/2);
 var gHalfHeight=Math.round(gHeight/2);
-var mouseCoords={"x": -100, "y": -100, "lastX": -100, "lastY": - 100};
+var mouseEasing={   "x": -30000,
+                    "y": -30000,
+                    "lastX": -30000,
+                    "lastY": -30000,
+                    "inited": false,
+                    "amount": 0};
 
 var backRect = new Rectangle(20, 20 , 43, 43);
 
@@ -92,17 +97,18 @@ function animation() {
     var halfWidth = gHalfWidth;
     var halfHeight = gHalfHeight;
     var i = gTime;
-    var mouseVec = mouseCoords;
-    mouseVec.x =  mouseVec.x + (mouseVec.lastX - mouseVec.x)/15;
-    mouseVec.y =  mouseVec.y + (mouseVec.lastY - mouseVec.y)/15;
+    var mouseVec = mouseEasing;
+    mouseVec.x =  mouseVec.x + (mouseVec.lastX - mouseVec.x)/8;
+    mouseVec.y =  mouseVec.y + (mouseVec.lastY - mouseVec.y)/8;
+    if (mouseVec.inited && mouseVec.amount < 1) mouseVec.amount += 0.05;
     for (var y = 0; y < height; y++) {
         for (var x = 0; x < width; x++) {
             vi = new Vector( x-halfWidth, y-halfHeight);
             v0 = new Vector( halfWidth, 0);
             p = (y * width + x) * 4;
-            mp = new Vector( mouseCoords.x - x, mouseCoords.y - y);
-            md = mp.len() > 50 ? 0 : 50 - mp.len();
-            s = backRect.getDistance(x,y)*12.9 + P(v0.cosA(vi), y > halfHeight) * 10 + md*2;
+            mouseDist = calcDistance(x,y, mouseEasing.x, mouseEasing.y);
+            mouseFadeing = mouseDist > 50 ? 0 : 50 - mouseDist;
+            s = backRect.getDistance(x,y)*12.9 + P(v0.cosA(vi), y > halfHeight) * 10 + mouseFadeing*2*mouseVec.amount;
             iData[p + 0] = (Math.cos(0.017 * (y + i)) + 1) * 127;
             iData[p + 1] = (Math.sin(0.02 * (i - y + x)) + 1) * 127;
             iData[p + 2] = (Math.cos(0.045 * (y + i)) + 1) * 127;
@@ -116,9 +122,14 @@ function animation() {
 }
 
 function onMouseMove(e) {
-    var mouseVec = mouseCoords;
+    var mouseVec = mouseEasing;
     mouseVec.lastX = (e.pageX - c.parentNode.offsetLeft)/scaleFactor;
     mouseVec.lastY = (e.pageY - c.parentNode.offsetTop)/scaleFactor;
+    if (!mouseVec.inited) {
+        mouseVec.inited = true;
+        mouseVec.x = mouseVec.lastX;
+        mouseVec.y = mouseVec.lastY;
+    }
 }
 
 function initLogo() {
