@@ -72,7 +72,7 @@ var gHeight=64;
 var scaleFactor=200/64;
 var gHalfWidth=Math.round(gWidth/2);
 var gHalfHeight=Math.round(gHeight/2);
-var mouseCoords=new Vector(-100,-100);
+var mouseCoords={"x": -100, "y": -100, "lastX": -100, "lastY": - 100};
 
 var backRect = new Rectangle(20, 20 , 43, 43);
 
@@ -92,6 +92,9 @@ function animation() {
     var halfWidth = gHalfWidth;
     var halfHeight = gHalfHeight;
     var i = gTime;
+    var mouseVec = mouseCoords;
+    mouseVec.x =  mouseVec.x + (mouseVec.lastX - mouseVec.x)/15;
+    mouseVec.y =  mouseVec.y + (mouseVec.lastY - mouseVec.y)/15;
     for (var y = 0; y < height; y++) {
         for (var x = 0; x < width; x++) {
             vi = new Vector( x-halfWidth, y-halfHeight);
@@ -113,8 +116,9 @@ function animation() {
 }
 
 function onMouseMove(e) {
-    mouseCoords.x = (e.pageX - c.parentNode.offsetLeft)/scaleFactor;
-    mouseCoords.y = (e.pageY - c.parentNode.offsetTop)/scaleFactor;
+    var mouseVec = mouseCoords;
+    mouseVec.lastX = (e.pageX - c.parentNode.offsetLeft)/scaleFactor;
+    mouseVec.lastY = (e.pageY - c.parentNode.offsetTop)/scaleFactor;
 }
 
 function initLogo() {
