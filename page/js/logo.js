@@ -61,14 +61,15 @@ function Rectangle(x1,y1,x2,y2) {
 }
 
 var c;
-var ctx;
+var scaledCanvas;
+var ctx, scaledCtx;
 var imgData;
 
 var gTime = 0;
 
 var gWidth=64;
 var gHeight=64;
-var scaleFactor=300/800;
+var scaleFactor=200/64;
 var gHalfWidth=Math.round(gWidth/2);
 var gHalfHeight=Math.round(gHeight/2);
 var mouseCoords=new Vector(-100,-100);
@@ -107,18 +108,21 @@ function animation() {
     }
     
     ctx.putImageData(imgData, 0, 0);
-
-//    ctx.drawImage(imgData, 0, 0);
+    scaledCtx.clearRect(0,0,200,200);
+    scaledCtx.drawImage(c, 0, 0);
 }
 
 function onMouseMove(e) {
-    mouseCoords.x = (e.pageX - c.parentNode.offsetLeft)*scaleFactor;
-    mouseCoords.y = (e.pageY - c.parentNode.offsetTop)*scaleFactor;
+    mouseCoords.x = (e.pageX - c.parentNode.offsetLeft)/scaleFactor;
+    mouseCoords.y = (e.pageY - c.parentNode.offsetTop)/scaleFactor;
 }
 
 function initLogo() {
-    c = document.getElementById("box1");
+    c = document.getElementById("logo__invisible");
+    scaledCanvas = document.getElementById("logo__back");
     ctx = c.getContext("2d");
+    scaledCtx = scaledCanvas.getContext("2d");
+    scaledCtx.scale(scaleFactor, scaleFactor);
     imgData = ctx.createImageData(gWidth,gHeight);
     document.addEventListener('mousemove', onMouseMove, 0);
 

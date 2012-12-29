@@ -112,7 +112,6 @@ body {
   .button-button:hover, .button-button.button_hover, .button-button.button-hover {
     background-position: 0 -39px; }
 
-#box1 {
-    width:800px;
-    height:400px;
+#logo__invisible {
+    display:none;
 }
